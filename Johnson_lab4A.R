@@ -13,13 +13,12 @@ library(lattice); library(rgdal)
 olinda <- readOGR(".", "olinda1")
 stream_utm <- readOGR(".", "stream")
 
-#project olinda shapefile to UTM coordinates (using epsg code)
 olinda_utm <- spTransform(olinda, CRS("+init=epsg:31985"))
 stream_utm <- spTransform(stream_utm, CRS("+init=epsg:31985"))
 plot(olinda_utm, axes=TRUE); 
 plot(stream_utm, col="blue", add=TRUE)
 
-#get unary union merge of olinda
+#get unary union merge of olinda. new comment. Hahahaha
 oScale <- getScale() #record original rgeos utility scale
 setScale(1e+4) #set to coarse scale
 bounds <- gUnaryUnion(olinda_utm)
